@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface BookService {
     List<Book> getAllBooks();
+    Book getBookById(String bookid);
+    List<Book> getBooksByCategory(String category);
+
 }

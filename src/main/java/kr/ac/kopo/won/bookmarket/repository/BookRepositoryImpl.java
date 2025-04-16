@@ -25,6 +25,7 @@ public class BookRepositoryImpl implements BookRepository {
         book1.setUnitsInStock(10000);
         book1.setReleaseDate("2024/12/31");
         book1.setCondition("신규도서");
+
         Book book2 = new Book();
         book2.setBookId("isbn0002");
         book2.setName("클린 코드");
@@ -38,6 +39,7 @@ public class BookRepositoryImpl implements BookRepository {
         book2.setUnitsInStock(4000);
         book2.setReleaseDate("2022/09/10");
         book2.setCondition("중고도서");
+
         Book book3 = new Book();
         book3.setBookId("isbn0003");
         book3.setName("파이썬 데이터 분석");
@@ -76,6 +78,18 @@ public class BookRepositoryImpl implements BookRepository {
             throw new IllegalArgumentException("도서번호가 " + bookId + "인 해당 도서를 찾을 수 없습니다.");
         }
         return bookInfo;
+    }
+
+    @Override
+    public List<Book> getBookListByCategory(String category) {
+        List<Book> booksByCategory = new ArrayList<>();
+        for (Book book : listOfBooks) {
+            if (book.getCategory()!=null && book.getCategory().equals(category)) {
+                booksByCategory.add(book);
+            }
+        }
+
+        return booksByCategory;
     }
 }
 
