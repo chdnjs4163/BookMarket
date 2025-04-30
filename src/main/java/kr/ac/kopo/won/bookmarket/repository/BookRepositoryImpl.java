@@ -48,7 +48,7 @@ public class BookRepositoryImpl implements BookRepository {
                 "판다스, 넘파이, 맷플롯립 등의 라이브러리를 활용하여 데이터 전처리, 시각화 및 머신러닝 기초까지 배울 수 있다. " +
                 "이 책을 통해 실무에서 데이터를 다루는 능력을 향상시킬 수 있다.");
         book3.setPublisher("제이펍");
-        book3.setCategory("IT 교재");
+        book3.setCategory("IT교재");
         book3.setUnitsInStock(5000);
         book3.setReleaseDate("2023/11/05");
         book3.setCondition("신규도서");
