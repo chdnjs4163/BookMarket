@@ -4,8 +4,7 @@ import kr.ac.kopo.won.bookmarket.domain.Book;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
@@ -49,7 +48,7 @@ public class BookRepositoryImpl implements BookRepository {
                 "판다스, 넘파이, 맷플롯립 등의 라이브러리를 활용하여 데이터 전처리, 시각화 및 머신러닝 기초까지 배울 수 있다. " +
                 "이 책을 통해 실무에서 데이터를 다루는 능력을 향상시킬 수 있다.");
         book3.setPublisher("제이펍");
-        book3.setCategory("데이터 분석");
+        book3.setCategory("IT 교재");
         book3.setUnitsInStock(5000);
         book3.setReleaseDate("2023/11/05");
         book3.setCondition("신규도서");
@@ -88,6 +87,37 @@ public class BookRepositoryImpl implements BookRepository {
                 booksByCategory.add(book);
             }
         }
+
+        return booksByCategory;
+    }
+
+    @Override
+    public Set<Book> getBookSetByFilter(Map<String, List<String>> filter) {
+        Set<Book> booksByPublisher = new HashSet<Book>();
+        Set<Book> booksByCategory = new HashSet<Book>();
+        Set<String> booksByFilter  = filter.keySet();
+
+        if (booksByFilter.contains("publisher")) {
+            for(int i =0; i<filter.get("publisher").size(); i++) {
+                String publisherName = filter.get("publisher").get(i);
+                for (Book book : listOfBooks) {
+                    if (publisherName.equalsIgnoreCase(book.getPublisher())){ //IgnoreCase 영어로 쓸떄는 이걸 써야한다
+                        booksByPublisher.add(book);
+                    }
+                }
+            }
+        }
+
+        if (booksByFilter.contains("category")) {
+            for (int i =0; i<filter.get("category").size(); i++) {
+                String categoryName = filter.get("category").get(i);
+                List<Book> list = getBookListByCategory(categoryName);
+                booksByCategory.addAll(list);
+            }
+        }
+
+//      저장된 요소 중에서 2 Set의 비교하여 같은 값만 남기고 나머지는 제거하는 역할(교집합만 남김)
+        booksByCategory.retainAll(booksByPublisher);
 
         return booksByCategory;
     }
