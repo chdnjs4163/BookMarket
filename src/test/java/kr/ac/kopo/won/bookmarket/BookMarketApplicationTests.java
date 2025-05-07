@@ -1,9 +1,9 @@
 package kr.ac.kopo.won.bookmarket;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import kr.ac.kopo.won.bookmarket.SpringBootTest;
 
-@SpringBootTest
+@kr.ac.kopo.won.bookmarket.SpringBootTest
 class BookMarketApplicationTests {
 
     @Test
