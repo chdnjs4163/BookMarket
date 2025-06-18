@@ -4,12 +4,12 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class Cartltem {
+public class CartItem {
     private  Book book;
     private  int quantity;
     private BigDecimal totalPrice;
 
-    public Cartltem(Book book){
+    public CartItem(Book book){
         this.book = book;
         quantity = 1;
         totalPrice = book.getUnitPrice();

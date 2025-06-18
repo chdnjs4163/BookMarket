@@ -20,5 +20,10 @@ public class CartServiceImpl  implements CartService{
         return cartRepository.read(cartId);
     }
 
+    @Override
+    public void update(String cartId,Cart cart) {
+        cartRepository.update(cartId,cart);
+    }
+
 
 }
