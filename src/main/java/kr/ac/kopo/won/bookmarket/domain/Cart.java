@@ -44,4 +44,10 @@ public class Cart { // Cartltem 전체 관리하는 항목
         }
     }
 
+    public  void removeCartIem(CartItem item){
+        String bookId = item.getBook().getBookId();
+        cartItems.remove(bookId);
+        updateGrandTotal();
+    }
+
 }
