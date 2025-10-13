@@ -14,6 +14,6 @@ public class Shipping {
     @DateTimeFormat(pattern = "YYY/MM/dd")
     private String date; // 배송일
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress_id")
+    @JoinColumn(name = "address_id")
     private Address address;
 }

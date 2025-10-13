@@ -39,6 +39,7 @@ public class CartController {
         System.out.println("Call requestCartList");
         Cart cart = cartService.read(cartId);
         model.addAttribute("cart", cart);
+        model.addAttribute("cartId", cartId);
         return "cart";
     }
    @PutMapping("/{cartId}")
