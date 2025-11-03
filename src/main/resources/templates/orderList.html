@@ -47,7 +47,7 @@
                 <div class="text-end" style="padding-right: 30px">
                     전체 주문수:[[${totalItems}]]
                 </div>
-                <table class="table-table-hover">
+                <table class="table table-hover">
                     <tr>
                         <th><a th:href="@{'/order/page?pageNum=' + ${currentPage} + '&sortField=orderId&sortDir=' + ${reverseSortDir}}">주문 ID</a></th>
                         <th><a th:href="@{'/order/page?pageNum=' + ${currentPage} + '&sortField=customer_id&sortDir=' + ${reverseSortDir}}">고객 ID</a></th>
