@@ -8,11 +8,7 @@
 <body>
 <main>
     <div class="container py-4">
-        <header class="pb-3 mb-4 border-bottom">
-            <a href="/BookMarket/home" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-                <span class="fs-4">BookMarket</span>
-            </a>
-        </header>
+      <th:block th:replace="~{/module/header}"></th:block>
 
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
@@ -127,10 +123,7 @@
                 </div>
             </form>
         </div>
-
-        <footer class="pt-3 mt-4 text-body-secondary border-top">
-            <span class="text">&copy; 2025 BookMarket</span>
-        </footer>
+        <th:block th:replace="~{/module/footer}"></th:block>
     </div>
 </main>
 </body>

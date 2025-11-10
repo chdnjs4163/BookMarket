@@ -22,15 +22,15 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public UserDetailsService users() {
-        UserDetails admin = User.builder()
-                .username("Admin")
-                .password(passwordEncoder().encode("Admin1234"))
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(admin);
-    }
+//    @Bean
+//    public UserDetailsService users() {
+//        UserDetails admin = User.builder()
+//                .username("Admin")
+//                .password(passwordEncoder().encode("Admin1234"))
+//                .roles("ADMIN")
+//                .build();
+//        return new InMemoryUserDetailsManager(admin);
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -46,11 +46,15 @@ public class SecurityConfig {
                                 .anyRequest().permitAll()
                 )
 //                .formLogin(Customizer.withDefaults());
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
+                .formLogin(
+                        formLogin -> formLogin
+
+                        .loginPage("/login") // 사용자 정의 로그인 페이지
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/books/add")
-                        .failureUrl("/loginfailed")
+                        .defaultSuccessUrl("/books/add") // 관리자 로그인 성공 후 이동하는 페이지
+                        .defaultSuccessUrl("/order/list") // 관리자 로그인 성공 후 이동하는 페이지
+                        .defaultSuccessUrl("/") // 일반 사용자 로그인 성공 후 이동하는 페이지
+                        .failureUrl("/loginfailed") // 로그인 실패 후 이동 페이지
                         .usernameParameter("username")
                         .passwordParameter("password")
                 )
